@@ -19,7 +19,7 @@ def get_rnn_cell(cell_type, config):
                               layer_norm = config.layer_norm,
                               norm_gain = config.norm_gain,
                               norm_shift = config.norm_shift,
-                              activation=config.activation)
+                              activation = config.activation)
     elif(cell_type == 'dynamic_fast_weights'):
         cell = DynamicFastWeightCell(num_units = config.layer_dim, 
                                      lam = config.fw_lambda, 
@@ -27,7 +27,7 @@ def get_rnn_cell(cell_type, config):
                                      layer_norm = config.layer_norm, 
                                      norm_gain = config.norm_gain,
                                      norm_shift = config.norm_shift,
-                                     activation = config.activation, 
+                                     activation = config.activation,
                                      batch_size = config.batchsize, 
                                      num_inner_loops=config.fw_inner_loops)
     elif(cell_type == 'autoconceptor'):

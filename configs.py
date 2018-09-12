@@ -16,7 +16,8 @@ class DefaultConfig(object):
     norm_gain =  1
     norm_shift = 1
     optimizer = tf.train.AdamOptimizer()
-    activation = tf.nn.tanh
+    activation = staticmethod(tf.nn.relu)
+
     clip_gradients = False
 
     def __repr__(self):
