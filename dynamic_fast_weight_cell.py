@@ -92,7 +92,7 @@ class DynamicFastWeightCell(tf.nn.rnn_cell.BasicRNNCell):
                  activation=tf.nn.relu,
                  batch_size=128,
                  num_inner_loops=1,
-                 sequence_length=9 
+                 sequence_length=9, 
                  reuse=None):
         """ Initialize parameters for a FastWeightCell
 
