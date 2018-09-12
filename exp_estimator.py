@@ -55,6 +55,12 @@ def main(_):
 
     config = get_config()
 
+    if not os.path.exists(FLAGS.save_path):
+        os.makedirs(FLAGS.save_path)
+
+    with open(os.path.join(FLAGS.save_path,"config.txt"), "w") as text_file:
+        print(config, file=text_file)
+
     classifier = tf.estimator.Estimator(
         model_fn=get_model_fn(FLAGS.task),
         model_dir=FLAGS.save_path,
@@ -78,8 +84,7 @@ def main(_):
 
     eval_result = classifier.evaluate(
         input_fn=lambda:data_provider.test_input_fn(FLAGS.data_path, FLAGS.task, config),
-        name="test",
-        steps=100
+        name="test"
     )
     
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
